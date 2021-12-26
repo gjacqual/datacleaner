@@ -2,14 +2,16 @@ from passwordGenerator import passgen
 import re
 
 
-# The code of the email_gen function was originally provided in the task
-def email_gen(list_of_names):
+# Function for creating email addresses from first and last names
+# The code of the email_gen function was originally specified in the task and slightly changed
+def email_generator(names):
     emails = []
-    for i in list_of_names:
-        letter = 1
-        while i[1] + '.' + i[0][0:letter] + '@company.io' in emails:
+
+    for name in names:
+        letter = 2
+        while name[1] + '.' + name[0][0:letter] + '@corporation.com' in emails:
             letter += 1
-        emails.append(i[1] + '.' + i[0][0:letter] + '@company.io')
+        emails.append(name[1] + '.' + name[0][0:letter] + '@corporation.com')
     return emails
 
 
@@ -33,7 +35,7 @@ for line in f:
         tmp_list.append(split_line[1])
         tmp_list.append(split_line[2])
         list_names.append(tmp_list)
-list_emails = email_gen(list_names)
+list_emails = email_generator(list_names)
 f.close()
 f = open('task_file.txt', 'w')
 j = 0
